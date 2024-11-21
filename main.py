@@ -1,14 +1,14 @@
 import random
 # -----------------------------------------------------------------
 zxc = 0 # Количество очков
-random_number1 = random.randint(10, 100000) # Число которое дано
-random_number2 = random.randint(1, 9) # То что нужн ололучить
+random_number1 = random.randint(10, 100) # Число которое дано
+random_number2 = random.randint(1, 10) # То что нужн ололучить
 victory = False # Победа
 lvl = 0
 # -----------------------------------------------------------------
 # Установка уровня сложности
 while 0 == 0:
-    qwe = int(input("Дорово\nВыбери уровень сложности\n > 1 = Лёгкий \n > 2 = Нормальный \n > 3 = Сложный"))
+    qwe = int(input("> 1 = Лёгкий \n > 2 = Нормальный \n > 3 = Сложный\nВыбери уровень сложности: "))
     if qwe == 1:
         zxc = 800
         break
@@ -23,17 +23,14 @@ while 0 == 0:
 # -----------------------------------------------------------------
 # Проверка какую операцию выбрал игрок
 def examination_operation(item, item2):
-    global zxc
-    if x == "+" and item2 < 100000:
+    if item == "+" and item2 < 100000:
         addition(item2)
-    elif x == "-" and item2 < 100000:
+    elif item == "-" and item2 < 100000:
         subtraction(item2)
-    elif x == "*" and item2 < 100000:
+    elif item == "*" and item2 < 100000:
         multiplication(item2)
-    elif x == "/" and item2 < 100000:
+    elif item == "/" and item2 < 100000:
         division(item2)
-    elif x == "$" and item2 < 100000:
-        zxc = 0
     else:
         print("Такой операции нету или число больше 99999")
 # -----------------------------------------------------------------
@@ -76,27 +73,25 @@ def division(item):
 # -----------------------------------------------------------------
 # Проверка на победу заранее
 def check_for_victory():
-    global zxc
     global victory
     global end_game1
     if random_number1 == random_number2:
         victory = True
-        zxc = 0
-        end_game1 = 1
+        end_game1 = False
 # -----------------------------------------------------------------
 # Игра
-end_game = 0
-while 0 == end_game:
-    end_game1 = 0
+end_game = True
+while end_game == True:
+    end_game1 = True
 # -----------------------------------------------------------------
 # Вывод на экран задачи
     print(f"Вам дано: {random_number1} | Нужно получить: {random_number2} | Баланс: {zxc}")
 # -----------------------------------------------------------------
 # Сама игра
-    while 0 == end_game1:
+    while end_game1 == True:
         x = input("Введи действие (+ - * / $): ")
         if x == "$":
-            end_game = 1
+            end_game = False
             break
         elif x == "*" or x == "-" or x == "+" or x == "/":
             xx = int(input("Ввиди число: "))
@@ -108,11 +103,11 @@ while 0 == end_game:
     check_for_victory()
     if victory == True:
         lvl+=1
-        print(f"ВЫ прошли на новый уровень {lvl+1}")
-        zxc+=1000
+        print(f"ВЫ прошли на новый уровень {lvl}")
+        zxc+=500
     else:
-        print(f"Игра окончена ваш уровень {lvl}")
+        print(f"Игра окончена ваш уровень {lvl-1}")
         break
-    random_number1 = random.randint(10, 100000) # Число которое дано
-    random_number2 = random.randint(1, 100000) # То что нужно получить
+    victory = False
+    random_number2 = random.randint(1, (10*lvl*qwe)) # То что нужно получить
 
