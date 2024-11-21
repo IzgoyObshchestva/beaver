@@ -9,13 +9,13 @@ victory = False # Победа
 while 0 == 0:
     qwe = int(input("Дорово\nВыбери уровень сложности\n > 1 = Лёгкий \n > 2 = Нормальный \n > 3 = Сложный"))
     if qwe == 1:
-        zxc = 700
+        zxc = 800
         break
     elif qwe == 2:
-        zxc = 500
+        zxc = 600
         break
     elif qwe == 3:
-        zxc = 300
+        zxc = 400
         break
     else:
         print("Ты даун?")
@@ -37,7 +37,7 @@ def examination_operation(item, item2):
         print("Такой операции нету или число больше 99")
 # -----------------------------------------------------------------
 # Вывод на экран задачи
-print(f"Вам дано: {random_number1} | Нужно получить: {random_number2} | Кол. действий {zxc}")
+print(f"Вам дано: {random_number1} | Нужно получить: {random_number2} | Баланс: {zxc}")
 # -----------------------------------------------------------------
 # Функции для операций
 def addition(item):
@@ -89,11 +89,11 @@ while 0 < zxc:
     x = input("Введи действие (+ - * / $): ")
     if x == "$":
         break
-    else:
+    elif x == "*" or x == "-" or x == "+" or x == "/":
         xx = int(input("Ввиди число: "))
         examination_operation(x, xx)
         check_for_victory()
-        print(f"У тебя: {random_number1} | Нужно получить: {random_number2} | Кол. действий {zxc}")
+        print(f"У тебя: {random_number1} | Нужно получить: {random_number2} | Баланс: {zxc}")
 # -----------------------------------------------------------------
 # Проверка на победу после окончания действий
 check_for_victory()
